@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        let ancho = parseInt(prompt('Introduce el ancho de la casilla'));
+        let casillas = parseInt(prompt('Introduce el numero de casillas'));
+
+        pintarTablero(casillas, ancho);
+
+        function pintarTablero(numColum, ancho) {
+            let s = '';
+
+            for (let i = 0; i < numColum; i++) {
+
+                if (i % 2 === 0) {
+                    s += pintarfila(ancho, numColum, 'red');
+                } else {
+                    s += pintarfila(ancho, numColum, 'black');
+                }
+            }
+            document.write(`<div class="tablero">${s}</div>`);
+        }
+
+        function pintarfila(ancho, numCasillas, colorStart) {
+
+            const color1 = colorStart == 'red' ? 'red' : 'black';
+            const color2 = colorStart == 'red' ? 'black' : 'red';
+            let concat = '';
+
+            for (let i = 0; i < numCasillas; i++) {
+
+                if (i % 2 === 0) {
+
+                    concat += pintarCasilla(ancho, color1);
+                } else {
+
+                    concat += pintarCasilla(ancho, color2);
+                }
+            }
+
+            return (`<div class="fila" style="display: flex;">${concat}</div>`);
+
+        }
+
+        function pintarCasilla(lado, color) {
+            return (`<div style="height: ${lado}px; width: ${lado}px; background-color: ${color};"></div>`)
+        }
+    </script>
+
+</body>
+
+</html>
